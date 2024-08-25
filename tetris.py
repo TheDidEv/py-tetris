@@ -3,17 +3,18 @@ import pygame.display
 from board import Board
 
 class Tetris:
-    
+
     def __init__(self):
+        pygame.init()
         self._screen = pygame.display.set_mode((720, 920))
-        self._board = Board(self._screen)
-        self._running = True
-        self._speed = 10
         self._clock = pygame.time.Clock()
+        self._running = True
+        self._speed = 40
+        self._board = Board(self._screen)
         pygame.font.init()
         self._score_font = pygame.font.SysFont('Arial', 30)
         self.run()
-        
+
     def run(self):
         counter = 0
         while self._running:
@@ -42,8 +43,6 @@ class Tetris:
             pygame.display.flip()
             counter += 1
             self._clock.tick(40)
-            text_surface = self._score_font.render('Score: ' + str(self._board._score), False, (255, 255, 255))
+            text_surface = self._score_font.render('Score: ' + str(self._board.score), False, (255, 255, 255))
             self._screen.blit(text_surface, (500, 150))
         pygame.quit()
-        
-Tetris()

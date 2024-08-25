@@ -2,12 +2,13 @@ import numpy as np
 
 class Shape:
     def __init__(self, rotations):
-        self._rotations = rotations
-        self._rotations_count = len(rotations)
-        
+        self.rotations = rotations
+        self.rotations_count = len(rotations)
+
     def get_matrix_with_offset(self, rotation, offset):
-        return offset + self._rotations[rotation]
-    
+        return offset + self.rotations[rotation]
+
+
 def generate_shapes():
     # shape i
     shape_i_rot1 = np.array([[1, 0], [1, 1], [1, 2], [1, 3]], np.int32)
